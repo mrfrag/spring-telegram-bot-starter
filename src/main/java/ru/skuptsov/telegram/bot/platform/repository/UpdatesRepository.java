@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.telegram.telegrambots.api.objects.Update;
 import ru.skuptsov.telegram.bot.platform.client.TelegramBotApi;
 import ru.skuptsov.telegram.bot.platform.config.UpdatesRepositoryConfiguration;
 import ru.skuptsov.telegram.bot.platform.model.UpdateEvent;
 import ru.skuptsov.telegram.bot.platform.model.UpdateEvents;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Update;
 import ru.skuptsov.telegram.bot.platform.service.MetricsService;
 
 import javax.annotation.PostConstruct;

@@ -5,5 +5,7 @@ package ru.skuptsov.telegram.bot.platform.client.command;
  * @since 01/06/2016
  */
 public interface ApiCommandSender {
-    void sendCommand(ApiCommand apiCommand);
+	
+    void sendCommand(ApiCommand<?> apiCommand);
+    
 }

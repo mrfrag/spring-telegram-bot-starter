@@ -4,7 +4,7 @@ apply plugin: 'maven'
 
 buildscript {
     ext {
-        projectVersion = 'v1.0'
+        projectVersion = '1.0'
 
         bootVersion = '1.4.1.RELEASE'
         jacksonVersion = '2.8.4'
@@ -76,7 +76,6 @@ dependencies {
     compile "com.ryantenney.metrics:metrics-spring:$metricsVersion"
     compile "org.aspectj:aspectjrt:$aspectjVersion"
     compile "org.aspectj:aspectjweaver:$aspectjVersion"
-    compile "com.github.rubenlagus:TelegramBots:$telegramApiVersion"
     compile "com.ning:async-http-client:$ningVersion"
     compile 'com.github.jitpack:gradle-simple:1.0.5'
 }
@@ -86,4 +85,13 @@ targetCompatibility = 1.8
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
 }

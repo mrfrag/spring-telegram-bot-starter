@@ -1,11 +1,11 @@
 package ru.skuptsov.telegram.bot.platform.handler;
 
-import org.telegram.telegrambots.api.objects.Message;
-import ru.skuptsov.telegram.bot.platform.model.UpdateEvent;
+import static java.util.Optional.ofNullable;
 
 import java.util.function.Function;
 
-import static java.util.Optional.ofNullable;
+import ru.skuptsov.telegram.bot.platform.model.UpdateEvent;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Message;
 
 /**
  * @author Sergey Kuptsov

@@ -11,18 +11,22 @@ import java.util.function.Consumer;
  * @since 31/05/2016
  */
 public interface ApiCommand<T> {
-    ApiCommand EMPTY = telegramBotApi -> {
+	
+    @SuppressWarnings("rawtypes")
+	ApiCommand EMPTY = telegramBotApi -> {
         CompletableFuture<Object> future = new CompletableFuture<>();
         future.complete(new Object());
         return future;
     };
 
-    Consumer EMPTY_CALLBACK = o -> {
+    @SuppressWarnings("rawtypes")
+	Consumer EMPTY_CALLBACK = o -> {
     };
 
     Future<T> execute(TelegramBotApi telegramBotApi);
 
-    default Consumer<T> getCallback() {
+    @SuppressWarnings("unchecked")
+	default Consumer<T> getCallback() {
         return EMPTY_CALLBACK;
     }
 

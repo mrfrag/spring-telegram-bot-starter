@@ -1,11 +1,11 @@
 package ru.skuptsov.telegram.bot.platform.callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.telegram.telegrambots.api.objects.Message;
 import ru.skuptsov.telegram.bot.platform.client.command.MessageResponse;
 import ru.skuptsov.telegram.bot.platform.handler.annotation.MessageHandler;
 import ru.skuptsov.telegram.bot.platform.handler.annotation.MessageMapping;
 import ru.skuptsov.telegram.bot.platform.model.UpdateEvent;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Message;
 
 import java.util.function.Consumer;
 

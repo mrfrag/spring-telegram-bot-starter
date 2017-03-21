@@ -2,7 +2,7 @@ package ru.skuptsov.telegram.bot.platform.client.command.impl;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.telegram.telegrambots.api.methods.send.SendVenue;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendVenue;
 
 /**
  * @author Sergey Kuptsov
@@ -11,6 +11,7 @@ import org.telegram.telegrambots.api.methods.send.SendVenue;
 @Getter
 @ToString
 public class SendVenueCommand extends ApiMessageCommand<SendVenue> {
+	
     public SendVenueCommand(SendVenue command) {
         super(command);
     }

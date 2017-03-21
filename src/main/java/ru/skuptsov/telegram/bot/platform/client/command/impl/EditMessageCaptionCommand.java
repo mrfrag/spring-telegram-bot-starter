@@ -2,7 +2,7 @@ package ru.skuptsov.telegram.bot.platform.client.command.impl;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.telegram.telegrambots.api.methods.updatingmessages.EditMessageCaption;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.message.EditMessageCaption;
 
 /**
  * @author Sergey Kuptsov
@@ -11,7 +11,8 @@ import org.telegram.telegrambots.api.methods.updatingmessages.EditMessageCaption
 @Getter
 @ToString
 public class EditMessageCaptionCommand extends ApiMessageCommand<EditMessageCaption> {
-    public EditMessageCaptionCommand(EditMessageCaption command) {
-        super(command);
-    }
+
+	public EditMessageCaptionCommand(EditMessageCaption command) {
+		super(command);
+	}
 }

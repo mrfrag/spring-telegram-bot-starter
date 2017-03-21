@@ -2,7 +2,7 @@ package ru.skuptsov.telegram.bot.platform.client.command.impl;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.telegram.telegrambots.api.methods.updatingmessages.EditMessageReplyMarkup;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.message.EditMessageReplyMarkup;
 
 /**
  * @author Sergey Kuptsov
@@ -11,7 +11,8 @@ import org.telegram.telegrambots.api.methods.updatingmessages.EditMessageReplyMa
 @Getter
 @ToString
 public class EditMessageReplyMarkupCommand extends ApiMessageCommand<EditMessageReplyMarkup> {
-    public EditMessageReplyMarkupCommand(EditMessageReplyMarkup message) {
-        super(message);
-    }
+
+	public EditMessageReplyMarkupCommand(EditMessageReplyMarkup message) {
+		super(message);
+	}
 }

@@ -12,10 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.CallbackQuery;
-import org.telegram.telegrambots.api.objects.Message;
-import org.telegram.telegrambots.api.objects.Update;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.skuptsov.telegram.bot.platform.CommonTestConfiguration;
@@ -24,6 +20,10 @@ import ru.skuptsov.telegram.bot.platform.common.BaseTestMatcher;
 import ru.skuptsov.telegram.bot.platform.config.BotPlatformConfiguration;
 import ru.skuptsov.telegram.bot.platform.model.UpdateEvent;
 import ru.skuptsov.telegram.bot.platform.model.UpdateEvents;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendMessage;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.CallbackQuery;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Message;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Update;
 import ru.skuptsov.telegram.bot.platform.repository.UpdatesRepository;
 
 import java.util.Objects;
@@ -73,7 +73,7 @@ public class MessageCallbackDataHandlerTest extends AbstractTestNGSpringContextT
         CallbackQuery callbackQuery = Mockito.mock(CallbackQuery.class);
         when(update.getCallbackQuery()).thenReturn(callbackQuery);
         when(callbackQuery.getData()).thenReturn("1");
-        when(message.getChatId()).thenReturn(CHAT_ID);
+        when(message.getChat().getId()).thenReturn(CHAT_ID);
         when(update.getMessage()).thenReturn(message);
 
         UpdateEvent updateEvent = new UpdateEvent(update, DateTime.now(UTC));
@@ -85,9 +85,10 @@ public class MessageCallbackDataHandlerTest extends AbstractTestNGSpringContextT
         //await termination
         Thread.sleep(1000);
 
-        SendMessage answer = new SendMessage();
-        answer.setChatId(CHAT_ID.toString());
-        answer.setText(MESSAGE_ANSWER);
+		SendMessage answer = SendMessage	.builder()
+													.chatId(CHAT_ID.toString())
+													.text(MESSAGE_ANSWER)
+													.build();
 
         verify(telegramBotApi)
                 .sendMessageAsync(argThat(new SendMessageObjectMatcher(answer)));
@@ -100,7 +101,7 @@ public class MessageCallbackDataHandlerTest extends AbstractTestNGSpringContextT
         CallbackQuery callbackQuery = Mockito.mock(CallbackQuery.class);
         when(update.getCallbackQuery()).thenReturn(callbackQuery);
         when(callbackQuery.getData()).thenReturn("2");
-        when(message.getChatId()).thenReturn(CHAT_ID);
+        when(message.getChat().getId()).thenReturn(CHAT_ID);
         when(update.getMessage()).thenReturn(message);
 
         UpdateEvent updateEvent = new UpdateEvent(update, DateTime.now(UTC));
@@ -112,9 +113,10 @@ public class MessageCallbackDataHandlerTest extends AbstractTestNGSpringContextT
         //await termination
         Thread.sleep(1000);
 
-        SendMessage callbackMessage = new SendMessage();
-        callbackMessage.setChatId(CHAT_ID.toString());
-        callbackMessage.setText(MESSAGE_ANSWER);
+		SendMessage callbackMessage = SendMessage	.builder()
+													.chatId(CHAT_ID.toString())
+													.text(MESSAGE_ANSWER)
+													.build();
 
         verify(telegramBotApi, never())
                 .sendMessageAsync(argThat(new SendMessageObjectMatcher(callbackMessage)));

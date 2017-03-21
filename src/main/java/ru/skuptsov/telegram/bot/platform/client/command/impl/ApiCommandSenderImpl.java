@@ -41,7 +41,7 @@ public class ApiCommandSenderImpl extends AbstractExecutionThreadService impleme
     private ExecutorService apiCommandSenderCallbackExecutor;
 
     @Override
-    public void sendCommand(ApiCommand apiCommand) {
+    public void sendCommand(ApiCommand<?> apiCommand) {
         log.trace("Sending api command {}", apiCommand);
         try {
             apiCommandQueue.offer(apiCommand, 5, TimeUnit.SECONDS);

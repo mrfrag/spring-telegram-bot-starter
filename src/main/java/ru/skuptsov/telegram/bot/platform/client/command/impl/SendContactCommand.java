@@ -2,7 +2,7 @@ package ru.skuptsov.telegram.bot.platform.client.command.impl;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.telegram.telegrambots.api.methods.send.SendContact;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendContact;
 
 /**
  * @author Sergey Kuptsov
@@ -11,7 +11,8 @@ import org.telegram.telegrambots.api.methods.send.SendContact;
 @Getter
 @ToString
 public class SendContactCommand extends ApiMessageCommand<SendContact> {
-    public SendContactCommand(SendContact command) {
-        super(command);
-    }
+
+	public SendContactCommand(SendContact command) {
+		super(command);
+	}
 }

@@ -11,7 +11,8 @@ import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendDocument;
 @Getter
 @ToString
 public class SendDocumentCommand extends ApiMessageCommand<SendDocument> {
-    public SendDocumentCommand(SendDocument command) {
-        super(command);
-    }
+
+	public SendDocumentCommand(SendDocument command) {
+		super(command);
+	}
 }

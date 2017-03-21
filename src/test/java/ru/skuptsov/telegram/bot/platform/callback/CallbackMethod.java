@@ -1,6 +1,6 @@
 package ru.skuptsov.telegram.bot.platform.callback;
 
-import org.telegram.telegrambots.api.objects.Message;
+import ru.skuptsov.telegram.bot.platform.model.api.objects.Message;
 
 /**
  * @author Sergey Kuptsov

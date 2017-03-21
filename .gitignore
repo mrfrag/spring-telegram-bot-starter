@@ -7,3 +7,7 @@ logs
 gradlew.bat
 
 application.yml
+bin/
+.classpath
+.project
+.settings
