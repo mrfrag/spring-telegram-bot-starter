@@ -3,8 +3,12 @@ package ru.skuptsov.telegram.bot.platform.model.api.methods.message;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.ChatBotApiMethod;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class ForwardMessage extends ChatBotApiMethod {
 
 	private static final String FROMCHATID_FIELD = "from_chat_id";
@@ -40,42 +44,4 @@ public class ForwardMessage extends ChatBotApiMethod {
 		this.disableNotification = disableNotification;
 	}
 
-	public String getFromChatId() {
-		return fromChatId;
-	}
-
-	public void setFromChatId(String fromChatId) {
-		this.fromChatId = fromChatId;
-	}
-
-	public Integer getMessageId() {
-		return messageId;
-	}
-
-	public void setMessageId(Integer messageId) {
-		this.messageId = messageId;
-	}
-
-	public Boolean getDisableNotification() {
-		return disableNotification;
-	}
-
-	public ForwardMessage enableNotification() {
-		this.disableNotification = false;
-		return this;
-	}
-
-	public ForwardMessage disableNotification() {
-		this.disableNotification = true;
-		return this;
-	}
-
-	@Override
-	public String toString() {
-		return "ForwardMessage{" +
-				"chatId='" + getChatId() + '\'' +
-				", fromChatId=" + fromChatId +
-				", messageId=" + messageId +
-				'}';
-	}
 }

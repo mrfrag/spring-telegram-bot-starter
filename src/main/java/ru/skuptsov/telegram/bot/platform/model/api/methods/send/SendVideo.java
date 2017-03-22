@@ -7,11 +7,13 @@ import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
 import com.ning.http.client.multipart.StringPart;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.SendFileBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.ReplyKeyboard;
 
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendVideo extends SendFileBotApiMethod {
 
 	public static final String VIDEO_FIELD = "video";

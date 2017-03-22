@@ -7,9 +7,13 @@ import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
 import com.ning.http.client.multipart.StringPart;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.SendFileBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.ReplyKeyboard;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendDocument extends SendFileBotApiMethod {
 
 	public static final String DOCUMENT_FIELD = "document";
@@ -31,30 +35,6 @@ public class SendDocument extends SendFileBotApiMethod {
 	private SendDocument(String chatId, Integer replyToMessageId, Boolean disableNotification, ReplyKeyboard replyMarkup, File file, String document, String caption) {
 		super(chatId, replyToMessageId, disableNotification, replyMarkup, file);
 		this.document = document;
-		this.caption = caption;
-	}
-
-	public String getDocument() {
-		return document;
-	}
-
-	/**
-	 * Use this method to set the document to an document existing in Telegram
-	 * system
-	 *
-	 * @param document
-	 *            File_id of the document to send
-	 * @note The file_id must have already been received or sent by your bot
-	 */
-	public void setDocument(String document) {
-		this.document = document;
-	}
-
-	public String getCaption() {
-		return caption;
-	}
-
-	public void setCaption(String caption) {
 		this.caption = caption;
 	}
 

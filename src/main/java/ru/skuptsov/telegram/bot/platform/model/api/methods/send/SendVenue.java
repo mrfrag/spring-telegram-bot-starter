@@ -3,11 +3,13 @@ package ru.skuptsov.telegram.bot.platform.model.api.methods.send;
 import javax.validation.ValidationException;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.SendBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.ReplyKeyboard;
 
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendVenue extends SendBotApiMethod {
 
 	public static final String LATITUDE_FIELD = "latitude";

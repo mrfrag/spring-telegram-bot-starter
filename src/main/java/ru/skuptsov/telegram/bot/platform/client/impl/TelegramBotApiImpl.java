@@ -35,7 +35,7 @@ import ru.skuptsov.telegram.bot.platform.model.api.methods.get.GetUserProfilePho
 import ru.skuptsov.telegram.bot.platform.model.api.methods.query.AnswerCallbackQuery;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.query.AnswerInlineQuery;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendChatAction;
-import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendChatAction.ActionType;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendChatAction.ActionTypes;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.Chat;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.ChatMember;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.File;
@@ -162,7 +162,7 @@ public class TelegramBotApiImpl implements TelegramBotApi {
 	}
 
 	@Override
-	public Future<Boolean> sendChatAction(@NotNull String chatId, ActionType action) {
+	public Future<Boolean> sendChatAction(@NotNull String chatId, ActionTypes action) {
 		return client.executeMethod(SendChatAction	.builder()
 													.chatId(chatId)
 													.action(action)

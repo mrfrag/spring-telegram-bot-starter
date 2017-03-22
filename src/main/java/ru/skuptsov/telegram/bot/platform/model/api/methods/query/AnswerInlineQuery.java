@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.BotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.inlinequery.result.InlineQueryResult;
 
@@ -17,6 +19,8 @@ import ru.skuptsov.telegram.bot.platform.model.api.objects.inlinequery.result.In
  */
 @Builder
 @AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class AnswerInlineQuery extends BotApiMethod {
 
 	private static final String INLINEQUERYID_FIELD = "inline_query_id";

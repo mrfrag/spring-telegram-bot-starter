@@ -2,12 +2,17 @@ package ru.skuptsov.telegram.bot.platform.model.api.methods.send;
 
 import javax.validation.ValidationException;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.ChatBotApiMethod;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendChatAction extends ChatBotApiMethod {
-
-	public static final String ACTION_FIELD = "action";
 
 	/**
 	 * Type of action to broadcast. Choose one, depending on what the user is
@@ -16,20 +21,12 @@ public class SendChatAction extends ChatBotApiMethod {
 	 * 'upload_audio' for audio files 'upload_document' for general files,
 	 * 'find_location' for location data.
 	 */
-	private ActionType action;
+	private ActionTypes action;
 
 	@Builder
-	private SendChatAction(String chatId, ActionType action) {
+	private SendChatAction(String chatId, ActionTypes action) {
 		super(chatId);
 		this.action = action;
-	}
-
-	public void setAction(ActionType action) {
-		this.action = action;
-	}
-
-	public ActionType getAction() {
-		return action;
 	}
 
 	@Override
@@ -40,28 +37,20 @@ public class SendChatAction extends ChatBotApiMethod {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "SendChatAction{" +
-				"chatId='" + getChatId() + '\'' +
-				", action='" + action + '\'' +
-				'}';
-	}
+	public static enum ActionTypes {
 
-	public static enum ActionType {
+		TYPING, RECORD_VIDEO, RECORD_AUDIO, UPLOAD_PHOTO, UPLOAD_VIDEO, UPLOAD_AUDIO, UPLOAD_DOCUMENT, FIND_LOCATION;
 
-		TYPING("typing"), RECORDVIDEO("record_video"), RECORDAUDIO("record_audio"), UPLOADPHOTO("upload_photo"), UPLOADVIDEO("upload_video"), UPLOADAUDIO("upload_audio"), UPLOADDOCUMENT("upload_document"), FINDLOCATION("find_location");
-
-		private String text;
-
-		ActionType(String text) {
-			this.text = text;
+		@JsonCreator
+		public static ActionTypes fromJson(String value) {
+			return valueOf(value.toUpperCase());
 		}
 
-		@Override
-		public String toString() {
-			return text;
+		@JsonValue
+		public String toJson() {
+			return name().toLowerCase();
 		}
+
 	}
 
 }

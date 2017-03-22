@@ -5,11 +5,13 @@ import javax.validation.ValidationException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.EditMessageBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.InlineKeyboardMarkup;
 
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class EditMessageText extends EditMessageBotApiMethod {
 
 	public static final String TEXT_FIELD = "text";
@@ -26,7 +28,7 @@ public class EditMessageText extends EditMessageBotApiMethod {
 	 * italic, fixed-width text or inline URLs in your bot's message.
 	 */
 	@JsonProperty(PARSE_MODE_FIELD)
-	private String parseMode;
+	private ParseModes parseMode;
 
 	/**
 	 * Optional. Disables link previews for links in this message
@@ -35,47 +37,11 @@ public class EditMessageText extends EditMessageBotApiMethod {
 	private Boolean disableWebPagePreview;
 
 	@Builder
-	private EditMessageText(String chatId, Integer messageId, String inlineMessageId, InlineKeyboardMarkup replyMarkup, String text, String parseMode, Boolean disableWebPagePreview) {
+	private EditMessageText(String chatId, Integer messageId, String inlineMessageId, InlineKeyboardMarkup replyMarkup, String text, ParseModes parseMode, Boolean disableWebPagePreview) {
 		super(chatId, messageId, inlineMessageId, replyMarkup);
 		this.text = text;
 		this.parseMode = parseMode;
 		this.disableWebPagePreview = disableWebPagePreview;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public EditMessageText disableWebPagePreview() {
-		disableWebPagePreview = true;
-		return this;
-	}
-
-	public EditMessageText enableWebPagePreview() {
-		disableWebPagePreview = null;
-		return this;
-	}
-
-	public EditMessageText enableMarkdown(boolean enable) {
-		if (enable) {
-			this.parseMode = "markdown";
-		} else {
-			this.parseMode = null;
-		}
-		return this;
-	}
-
-	public EditMessageText enableHtml(boolean enable) {
-		if (enable) {
-			this.parseMode = "html";
-		} else {
-			this.parseMode = null;
-		}
-		return this;
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import ru.skuptsov.telegram.bot.platform.model.api.methods.BotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.get.GetUserProfilePhotos;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.query.AnswerCallbackQuery;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.query.AnswerInlineQuery;
-import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendChatAction.ActionType;
+import ru.skuptsov.telegram.bot.platform.model.api.methods.send.SendChatAction.ActionTypes;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.Chat;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.ChatMember;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.File;
@@ -54,5 +54,5 @@ public interface TelegramBotApi {
 
 	Optional<Integer> getChatMemberCount(@NotNull String chatId);
 
-	Future<Boolean> sendChatAction(@NotNull String chatId, ActionType action);
+	Future<Boolean> sendChatAction(@NotNull String chatId, ActionTypes action);
 }

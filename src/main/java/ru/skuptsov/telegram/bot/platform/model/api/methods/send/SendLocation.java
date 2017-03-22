@@ -3,11 +3,13 @@ package ru.skuptsov.telegram.bot.platform.model.api.methods.send;
 import javax.validation.ValidationException;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.SendBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.ReplyKeyboard;
 
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendLocation extends SendBotApiMethod {
 
 	public static final String LATITUDE_FIELD = "latitude";
@@ -27,22 +29,6 @@ public class SendLocation extends SendBotApiMethod {
 	private SendLocation(String chatId, Integer replyToMessageId, Boolean disableNotification, ReplyKeyboard replyMarkup, Float latitude, Float longitude) {
 		super(chatId, replyToMessageId, disableNotification, replyMarkup);
 		this.latitude = latitude;
-		this.longitude = longitude;
-	}
-
-	public Float getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(Float latitude) {
-		this.latitude = latitude;
-	}
-
-	public Float getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Float longitude) {
 		this.longitude = longitude;
 	}
 

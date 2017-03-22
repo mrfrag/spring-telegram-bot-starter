@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.BotApiMethod;
 
 /**
@@ -21,12 +23,12 @@ import ru.skuptsov.telegram.bot.platform.model.api.methods.BotApiMethod;
  */
 @Builder
 @AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class AnswerCallbackQuery extends BotApiMethod {
 
 	private static final String CALLBACKQUERYID_FIELD = "callback_query_id";
-	private static final String TEXT_FIELD = "text";
 	private static final String SHOWALERT_FIELD = "show_alert";
-	private static final String URL_FIELD = "url";
 
 	/**
 	 * Unique identifier for the query to be answered
@@ -38,7 +40,6 @@ public class AnswerCallbackQuery extends BotApiMethod {
 	 * Optional Text of the notification. If not specified, nothing will be
 	 * shown to the user, 0-200 characters
 	 */
-	@JsonProperty(TEXT_FIELD)
 	private String text;
 
 	/**
@@ -55,7 +56,6 @@ public class AnswerCallbackQuery extends BotApiMethod {
 	 * InlineQueryResultGamelike telegram.me/your_bot?start=XXXX that open your
 	 * bot with a parameter.
 	 */
-	@JsonProperty(URL_FIELD)
 	private String url;
 
 	@Override

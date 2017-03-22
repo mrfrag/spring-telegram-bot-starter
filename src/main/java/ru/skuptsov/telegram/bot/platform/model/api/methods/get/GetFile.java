@@ -6,10 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.BotApiMethod;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class GetFile extends BotApiMethod {
 
 	private static final String FILEID_FIELD = "file_id";
@@ -20,19 +26,6 @@ public class GetFile extends BotApiMethod {
 	@JsonProperty(FILEID_FIELD)
 	private String fileId;
 
-	public GetFile() {
-		super();
-	}
-
-	public String getFileId() {
-		return fileId;
-	}
-
-	public GetFile setFileId(String fileId) {
-		this.fileId = fileId;
-		return this;
-	}
-
 	@Override
 	public void validate() {
 		if (fileId == null) {
@@ -40,10 +33,4 @@ public class GetFile extends BotApiMethod {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "GetFile{" +
-				"fileId='" + fileId + '\'' +
-				'}';
-	}
 }

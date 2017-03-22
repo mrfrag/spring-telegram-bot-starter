@@ -7,11 +7,13 @@ import com.ning.http.client.AsyncHttpClient.BoundRequestBuilder;
 import com.ning.http.client.multipart.StringPart;
 
 import lombok.Builder;
-import lombok.ToString;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.skuptsov.telegram.bot.platform.model.api.methods.SendFileBotApiMethod;
 import ru.skuptsov.telegram.bot.platform.model.api.objects.replykeyboard.ReplyKeyboard;
 
-@ToString
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SendPhoto extends SendFileBotApiMethod {
 
 	public static final String PHOTO_FIELD = "photo";
@@ -29,27 +31,11 @@ public class SendPhoto extends SendFileBotApiMethod {
 	 * file_id).
 	 */
 	private String caption;
-	
+
 	@Builder
 	private SendPhoto(String chatId, Integer replyToMessageId, Boolean disableNotification, ReplyKeyboard replyMarkup, File file, String photo, String caption) {
 		super(chatId, replyToMessageId, disableNotification, replyMarkup, file);
 		this.photo = photo;
-		this.caption = caption;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	public String getCaption() {
-		return caption;
-	}
-
-	public void setCaption(String caption) {
 		this.caption = caption;
 	}
 
