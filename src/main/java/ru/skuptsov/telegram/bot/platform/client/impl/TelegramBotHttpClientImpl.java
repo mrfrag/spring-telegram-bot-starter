@@ -54,7 +54,7 @@ public class TelegramBotHttpClientImpl implements TelegramBotHttpClient {
 	private <T> Request prepareRequest(@Nullable T requestObject, AsyncHttpClient.BoundRequestBuilder requestBuilder) {
 		if (requestObject != null) {
 			try {
-				log.debug("Sending command: {0}", jsonMapper.writeValueAsString(requestObject));
+				log.debug("Sending command: {}", jsonMapper.writeValueAsString(requestObject));
 				if (requestObject instanceof SendFileBotApiMethod && ((SendFileBotApiMethod) requestObject).isNewFile()) {
 					requestBuilder.setHeader("Content-Type", "multipart/form-data");
 					((SendFileBotApiMethod) requestObject).populateRequest(requestBuilder);
